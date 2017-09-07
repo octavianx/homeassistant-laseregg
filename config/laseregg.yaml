@@ -1,0 +1,4 @@
+  - platform: laseregggen1
+    devtimeid: [yourdevicetimeid] 
+    devid: [yourdevid]
+    friendly_name: ASYOULIKE
