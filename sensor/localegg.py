@@ -7,6 +7,8 @@
 #
 # author: octavianx, 2017-09-01
 #
+# deal with multiple lasereggs
+#
 
 import requests
 import yaml
@@ -30,7 +32,7 @@ REQARGVDETAIL= "id"
 YAML_DEF_PLATFORM = 'platform'
 
 def getAQI(eggID):
-    print ("Probing devid : %s" % eggID)
+    print (">Probing devid : %s" % eggID)
     timeID = eggID
     reqbase = REQDOMAIN + '/' + REQPATH + '/' + REQAPI_GETNAME
     parameters = {  REQARGV : timeID }
@@ -39,12 +41,14 @@ def getAQI(eggID):
     print (">>%s" % response.url)
     answer = response.json()
     response.raise_for_status()
+    if (  response.status_code != requests.codes.ok ):
+        return (-1)
     devid = answer['data']['id']
     reqbase2 = REQDOMAIN + '/' + REQPATH + '/' + REQAPI_GETDETAIL
     parameters2 = { REQARGVDETAIL : devid}
     res2 = requests.get(url=reqbase2, params= parameters2, 
                             timeout = DEFAULT_TIMEOUT)
-    print (">:%s"  % res2.url)
+    print (">>%s"  % res2.url)
     res2.raise_for_status()
     if ( res2.status_code == requests.codes.ok ) :
         answer2 = res2.json()
@@ -67,12 +71,12 @@ def list_up_dic_keyvalue(dict_a):
         for x in range(len(dict_a)):
             temp_key = list(dict_a.keys())[x]
             temp_value = dict_a[temp_key]
-            print("%s : %s" %(temp_key,temp_value))
+            print("\t %s : %s" %(temp_key,temp_value))
 
 
 f = open('./laseregg.yaml')
 content = yaml.load(f)
-print ("1.Yaml file loaded")
+print (">Yaml file loaded")
 for  x in range(len(content)):
     temp_dict  = content[x]
     search_all_dict(temp_dict, 'platform', 'laseregggen1')
