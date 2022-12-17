@@ -3,7 +3,7 @@
 
 # homeassistant-laseregg
 
-** this code will no longer working **   
+**This code is deprecated**   
 Updated in Dec,2022
 It is deprecated for kaiterra has updated laseregg security measure that it will neeed a API Key to access the laseregg data.
 And homeassistant has officially supported laseregg. https://www.home-assistant.io/integrations/kaiterra/
