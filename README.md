@@ -1,8 +1,21 @@
+
+
+
 # homeassistant-laseregg
+
+** this code will no longer working **   
+Updated in Dec,2022
+It is deprecated for kaiterra has updated laseregg security measure that it will neeed a API Key to access the laseregg data.
+And homeassistant has officially supported laseregg. https://www.home-assistant.io/integrations/kaiterra/
+
+Be aware that in the Kaiterra dashboard, you need to search `article` in the source code to identify the UUID for each of your
+device.
+
+
 
 This a component for laseregg to be adapted to homeassistant.
 
-Cause: 
+## Cause: 
 
 The original device of laseregg v1 donot provied the ability to be 
 controlled via home-assistant nor the Apple HomeKit connection.
